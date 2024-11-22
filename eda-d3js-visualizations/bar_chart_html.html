@@ -1,0 +1,56 @@
+# Prepare Top 10 data for bar chart
+top_10 = happiness_2019.nlargest(10, 'Happiness Score').to_dict('records')
+top_10_json = json.dumps(top_10)
+
+bar_chart_html = f"""
+<div id="barchart" style="width: 800px; height: 500px;"></div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    // Dataset passed from Python
+    const data = {top_10_json};
+
+    // Set up SVG canvas dimensions
+    const margin = {{top: 20, right: 30, bottom: 70, left: 50}},
+          width = 800 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+
+    const svg = d3.select("#barchart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Create scales
+    const x = d3.scaleBand()
+        .domain(data.map(d => d.Country))
+        .range([0, width])
+        .padding(0.2);
+
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d["Happiness Score"])])
+        .range([height, 0]);
+
+    // Add axes
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("transform", "rotate(-40)")
+        .style("text-anchor", "end");
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    // Add bars
+    svg.selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", d => x(d.Country))
+        .attr("y", d => y(d["Happiness Score"]))
+        .attr("width", x.bandwidth())
+        .attr("height", d => height - y(d["Happiness Score"]))
+        .style("fill", "teal");
+</script>
+"""
+HTML(bar_chart_html)
