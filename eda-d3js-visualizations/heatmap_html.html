@@ -1,0 +1,59 @@
+from IPython.display import HTML
+
+heatmap_html = f"""
+<div id="heatmap" style="width: 800px; height: 500px;"></div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    // Dataset passed from Python
+    const data = {corr_matrix_json};
+
+    // Set up SVG canvas dimensions
+    const margin = {{top: 20, right: 30, bottom: 50, left: 50}},
+          width = 800 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+
+    const svg = d3.select("#heatmap").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Define scales
+    const x = d3.scaleBand()
+        .domain([...new Set(data.map(d => d.index))])
+        .range([0, width])
+        .padding(0.05);
+
+    const y = d3.scaleBand()
+        .domain([...new Set(data.map(d => d.variable))])
+        .range([0, height])
+        .padding(0.05);
+
+    const color = d3.scaleSequential(d3.interpolateCool)
+        .domain([-1, 1]);
+
+    // Add heatmap squares
+    svg.selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", d => x(d.index))
+        .attr("y", d => y(d.variable))
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", d => color(d.value));
+
+    // Add x-axis
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end");
+
+    // Add y-axis
+    svg.append("g")
+        .call(d3.axisLeft(y));
+</script>
+"""
+HTML(heatmap_html)
