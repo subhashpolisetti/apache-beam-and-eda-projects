@@ -1,95 +1,161 @@
 
-# Data Engineering Projects: EDA, Auto EDA, and Apache Beam
+# Apache Beam and Exploratory Data Analysis Projects
 
-Welcome to my Data Engineering Projects repository! This collection of work showcases my skills and approach to solving real-world data problems using different techniques and tools. The repository contains three distinct projects that demonstrate a range of data engineering tasks, including **Exploratory Data Analysis (EDA)**, **Auto EDA**, and **stream processing with Apache Beam**.
-
-## Overview of Projects
-
-This repository is organized into three major sections, each corresponding to a specific data engineering task:
-
-### 1. **Exploratory Data Analysis with D3.js Visualizations**
-The first project focuses on conducting a detailed **Exploratory Data Analysis (EDA)** using a complex Kaggle dataset. The goal is to uncover patterns, identify trends, and provide insights into the dataset using **interactive D3.js visualizations**. Advanced visualizations such as scatter plots, bar charts, and hierarchical visualizations have been created to visually communicate key insights.
-
-- **Key Focus**: In-depth analysis of the dataset with visually engaging D3.js charts.
-- **Tools Used**: Jupyter/Colab, D3.js, Kaggle dataset.
-
-### 2. **Auto EDA using Automated Tools**
-In the second project, I used **automated EDA tools** like **Sweetviz** and **pandas-profiling** to generate an in-depth analysis of another Kaggle dataset. This process includes detecting missing values, examining distributions, and identifying correlations. The goal is to present a quick yet comprehensive report with visually appealing charts to summarize the dataset.
-
-- **Key Focus**: Automating the EDA process to save time while ensuring the results are visually intuitive and easy to interpret.
-- **Tools Used**: Jupyter/Colab, Sweetviz, pandas-profiling, Kaggle dataset.
-
-### 3. **Apache Beam for Stream Processing**
-The third project demonstrates the power of **Apache Beam** for processing real-time streaming data. I created a pipeline to handle large-scale data transformations and processing tasks such as **windowing**, **triggers**, **composite transforms**, and **streaming data operations**. The project also includes a video that explains the working of Apache Beam, the pipeline's flow, and the results achieved.
-
-- **Key Focus**: Hands-on implementation of stream processing using Apache Beam.
-- **Tools Used**: Jupyter/Colab, Apache Beam, Python, and streaming data.
-
-## Project Structure
-
-To ensure the project is easy to navigate and well-structured, the repository is divided into folders corresponding to each task. Here is an overview of the directory structure:
-
-```
-data-engineering-project/
-│
-├── eda-d3js-visualizations/      # Exploratory Data Analysis with D3.js Visualizations
-│   ├── colab_notebooks/          # Colab notebooks containing the EDA work
-│   ├── visualizations/           # Generated visualizations (e.g., HTML, images)
-│   └── README.md                 # Detailed explanation of the EDA process
-│
-├── auto-eda-analysis/            # Auto EDA using Sweetviz or pandas-profiling
-│   ├── colab_notebooks/          # Colab notebooks for automated analysis
-│   ├── reports/                  # Generated EDA reports (e.g., HTML, CSV)
-│   └── README.md                 # Explanation of the auto EDA process and tools used
-│
-├── apache-beam-processing/       # Stream Processing with Apache Beam
-│   ├── colab_notebooks/          # Colab notebooks demonstrating the Beam pipeline
-│   └── README.md                 # Detailed explanation of Apache Beam features and implementation
-│
-└── README.md                     # Main repository overview
-```
-
-### How to Use
-
-To explore the contents of this repository, follow the steps below:
-
-1. **Clone the Repository**: Clone this repository to your local machine using the following command:
-
-   ```bash
-   git clone https://github.com/subhashpolisetti/data-engineering-project.git
-   ```
-
-2. **Navigate to the Desired Folder**: Go to the folder corresponding to the project you're interested in. For example:
-
-   ```bash
-   cd eda-d3js-visualizations/  # For exploring the EDA with D3.js project
-   ```
-
-3. **Open the Jupyter/Colab Notebooks**: Open the Colab notebooks to view the code and results.
-
-4. **Examine the Generated Files**: Each section contains generated files such as visualizations, reports, or videos. These are included to help you better understand the analysis, processing, and results.
-
-5. **Watch the Explanation Videos**: For Apache Beam, there's an explanation video in the **videos** folder that walks through the code and the concepts behind the implementation.
-
-### Key Tools and Libraries Used
-
-- **D3.js**: For creating interactive and dynamic data visualizations.
-- **Sweetviz** & **pandas-profiling**: Auto-EDA tools for quick and automated exploratory data analysis.
-- **Apache Beam**: For stream processing and data transformations.
-- **Python**: The primary programming language used for writing scripts and notebooks.
-- **Jupyter/Colab**: Interactive environments used for writing and running Python code.
-
-## Acknowledgments
-
-- **Kaggle** for providing the datasets used in these projects.
-- **Apache Beam** documentation and community for the stream processing tutorials and resources.
-- **D3.js** for enabling the creation of rich, interactive visualizations.
-- **Sweetviz** and **pandas-profiling** for simplifying the EDA process.
-
-## Contact
-
-If you have any questions, feel free to reach out to me via my GitHub profile or email.
+This repository showcases three projects that demonstrate the use of advanced data processing, interactive visualizations, and automated exploratory data analysis (EDA). The projects utilize **Apache Beam**, **D3.js**, and **Sweetviz** for real-time processing, visual insights, and structured data analysis. Each project includes detailed documentation, sample code, and references to Colab notebooks and YouTube tutorials.
 
 ---
 
-Thank you for exploring this project! I hope you find the content insightful and helpful as you explore the world of data engineering.
+## Table of Contents
+
+1. [Project Descriptions](#project-descriptions)
+   - [1. Apache Beam: Real-Time Movie Data Processing](#1-apache-beam-real-time-movie-data-processing)
+   - [2. World Happiness Report 2019: Advanced EDA with D3.js and PyCaret](#2-world-happiness-report-2019-advanced-eda-with-d3js-and-pycaret)
+   - [3. Netflix Dataset Analysis Using Sweetviz](#3-netflix-dataset-analysis-using-sweetviz)
+2. [Technologies Used](#technologies-used)
+3. [How to Use](#how-to-use)
+4. [Repository Structure](#repository-structure)
+5. [Colab Notebooks and YouTube Tutorials](#colab-notebooks-and-youtube-tutorials)
+
+---
+
+## Project Descriptions
+
+### 1. Apache Beam: Real-Time Movie Data Processing
+
+**Objective:** Demonstrate the use of **Apache Beam** for processing movie data with features like filtering, transforming, and windowing operations in a simulated real-time streaming environment.
+
+#### Key Features
+- **Composite Transforms:** Encapsulates multiple processing steps into reusable components.
+- **ParDo:** Applies custom logic to individual elements.
+- **Windowing and Triggers:** Groups data into 60-second intervals for processing.
+- **Simulated Streaming:** Generates dynamic streaming data for real-time applications.
+- **Dynamic Outputs:** Writes processed results to Google Drive for easy access.
+
+#### Pipeline Steps
+1. Simulate streaming movie data.
+2. Parse raw CSV data into structured dictionaries.
+3. Apply windowing to group data by fixed intervals.
+4. Use composite transforms to filter and format movie data.
+5. Save results as a text file in Google Drive.
+
+#### Output
+A processed output file (`movies_output.txt`) containing movie titles and their respective countries:
+```
+Title_1: Country_1
+Title_2: Country_2
+...
+```
+
+---
+
+### 2. World Happiness Report 2019: Advanced EDA with D3.js and PyCaret
+
+**Objective:** Analyze the **2019 World Happiness Report** dataset to uncover insights through **interactive visualizations** and **predictive modeling**.
+
+#### Key Features
+- **Interactive Visualizations with D3.js:**
+  - Scatter Plot: Happiness Score vs GDP per Capita.
+  - Bar Chart: Top 10 happiest countries.
+  - Heatmap: Correlation between socio-economic factors.
+- **Predictive Modeling with PyCaret:**
+  - Automates regression model comparison, tuning, and evaluation.
+  - Identifies the best predictors for happiness scores.
+
+#### Dataset
+The dataset includes socio-economic indicators like:
+- GDP per Capita
+- Social Support
+- Freedom
+- Life Expectancy
+- Generosity
+- Corruption
+
+#### Workflow
+1. Perform EDA with D3.js for interactive visual insights.
+2. Use PyCaret to build and evaluate regression models predicting happiness scores.
+
+---
+
+### 3. Netflix Dataset Analysis Using Sweetviz
+
+**Objective:** Automate the EDA of the Netflix dataset to uncover trends and patterns using **Sweetviz**, a Python library for visually appealing reports.
+
+#### Key Features
+- Generate interactive reports summarizing data distributions and correlations.
+- Identify trends in content type, ratings, and release years.
+
+#### Insights
+- **Content Type:** Movies dominate Netflix’s catalog.
+- **Popular Ratings:** TV-MA and TV-14 are most common.
+- **Release Year Trends:** A significant rise in content production post-2010.
+
+#### Output
+An HTML report (`Netflix_Analysis.html`) with an in-depth summary of the dataset.
+
+---
+
+## Technologies Used
+
+- **Apache Beam:** Distributed data processing framework.
+- **D3.js:** JavaScript library for interactive, browser-based visualizations.
+- **Sweetviz:** Python library for automated EDA.
+- **PyCaret:** Low-code machine learning library for regression modeling.
+- **Google Colab:** Cloud-based environment for running Python and JavaScript code.
+- **Pandas, Matplotlib, Seaborn:** Data manipulation and static visualizations.
+
+---
+
+## How to Use
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/subhashpolisetti/apache-beam-and-eda-projects.git
+   ```
+
+2. **Set Up Dependencies:**
+   - Install Python libraries:
+     ```bash
+     pip install apache-beam pandas matplotlib seaborn sweetviz pycaret
+     ```
+
+3. **Run Projects:**
+   - Open the Colab notebooks for each project and follow the instructions provided.
+
+---
+
+## Repository Structure
+
+```
+apache-beam-and-eda-projects/
+├── apache-beam-processing/
+│   ├── Composite_Transforms_and_Real_Time_Data_with_Apache_Beam.ipynb
+│   ├── README.md
+│   └── movies_output.txt-00000-of-00001
+│
+├── eda-d3js-visualizations/
+│   ├── World_Happiness_Report_2019_Advanced_EDA_with_D3_js_Visualizations.ipynb
+│   ├── bar_chart_html.html
+│   ├── heatmap_html.html
+│   ├── scatter_plot.html
+│   └── README.md
+│
+├── auto-eda-analysis/
+│   ├── Netflix_EDA_with_Sweetviz.ipynb
+│   ├── Netflix_Analysis.html
+│   └── README.md
+│
+└── README.md
+```
+
+---
+
+## Colab Notebooks and YouTube Tutorials
+
+| **Project**                                           | **Colab Notebook**                                        | **YouTube Tutorial**                                       |
+|-------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| Apache Beam: Real-Time Movie Data Processing          | [Open in Colab](https://github.com/subhashpolisetti/apache-beam-and-eda-projects/blob/main/apache-beam-processing/Composite_Transforms_and_Real_Time_Data_with_Apache_Beam.ipynb)                                        | [Watch Tutorial](https://www.youtube.com/playlist?list=PL6O21IOHvBmfnPYmHJRWiovggjKClTI_w)                                       |
+| World Happiness Report 2019: Advanced EDA with D3.js  | [Open in Colab](https://github.com/subhashpolisetti/apache-beam-and-eda-projects/blob/main/eda-d3js-visualizations/World_Happiness_Report_2019_Advanced_EDA_with_D3_js_Visualizations.ipynb)                                        | [Watch Tutorial](https://www.youtube.com/playlist?list=PL6O21IOHvBmfnPYmHJRWiovggjKClTI_w)                                       |
+| Netflix Dataset Analysis Using Sweetviz               | [Open in Colab](https://github.com/subhashpolisetti/apache-beam-and-eda-projects/blob/main/%E2%80%8Eauto-eda-analysis/Netflix_EDA_with_Sweetviz.ipynb)                                        | [Watch Tutorial](https://www.youtube.com/playlist?list=PL6O21IOHvBmfnPYmHJRWiovggjKClTI_w)                                       |
+
+
+
